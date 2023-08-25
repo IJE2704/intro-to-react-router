@@ -1,20 +1,31 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2020: true, node: true },
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:react-redux/recommended",
+    "plugin:prettier/recommended",
+    "prettier/react",
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+  plugins: ["emotion", "graphql", "prettier", "react-redux"],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
+    "emotion/jsx-import": "error",
+    "emotion/no-vanilla": "error",
+    "emotion/import-from-emotion": "error",
+    "emotion/styled-import": "error",
+    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
+    "graphql/template-strings": [
+      `error`,
+      {
+        env: `relay`,
+        tagName: `graphql`,
+      },
     ],
   },
 }
